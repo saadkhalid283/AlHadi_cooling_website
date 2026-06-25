@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* AlHadi Cooling brand palette (Phase 2)        Cool, premium, AA-accessible. Sky #A1C9F2 kept as ACCENT only -
+       it fails AA as text on white, so text/CTAs use the deeper blues. */
+    --brand-sky: 210 73% 79%;        /* #A1C9F2 - signature accent */
+    --brand-sky-soft: 205 80% 96%;   /* #EEF6FD - soft section tint */
+    --brand: 201 90% 38%;            /* #0A6BB8 - primary CTA (AA on white) */
+    --brand-deep: 205 74% 22%;       /* #0E3A5C - gradient / footer base */
+    --brand-ink: 209 64% 17%;        /* #0E2A45 - headings */
+    --brand-muted: 209 18% 40%;      /* #545E6B - body text */
+    --cyan: 189 84% 42%;             /* #11A8C4 - fresh secondary accent */
+    --accent-warm: 14 88% 58%;       /* #F0613A - emergency / urgency pop */
+
+    --background: 0 0% 100%;
+    --foreground: 209 18% 40%;
+    --border: 210 28% 90%;
+    --accent: 210 73% 79%;
+    --whatsapp: 142 70% 45%;
+
+    --radius: 0.875rem;
+  }
+
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--brand-muted));
+    font-family: var(--font-sans), system-ui, sans-serif;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  [dir="rtl"] body {
+    font-family: var(--font-arabic), system-ui, sans-serif;
+  }
+
+  h1, h2, h3, h4 {
+    color: hsl(var(--brand-ink));
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  :focus-visible {
+    outline: 2px solid hsl(var(--brand));
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply container mx-auto px-6;
+  }
+  .section {
+    @apply py-16 sm:py-20 lg:py-24;
+  }
+}
+
+/* ── Wall of Love marquee ─────────────────────────────────────────
+   Pure CSS so it animates without JS and stays crawlable. Seamless via
+   two identical groups; the -50% - gap/2 offset accounts for the gap. */
+.marquee {
+  --gap: 1.25rem;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 7%,
+    #000 93%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 7%,
+    #000 93%,
+    transparent
+  );
+}
+.marquee__track {
+  display: flex;
+  gap: var(--gap);
+  width: max-content;
+  animation: marquee-x var(--duration, 26s) linear infinite;
+}
+.marquee__track--reverse {
+  animation-direction: reverse;
+}
+.marquee__group {
+  display: flex;
+  gap: var(--gap);
+  flex: 0 0 auto;
+}
+.marquee:hover .marquee__track,
+.marquee:focus-within .marquee__track {
+  animation-play-state: paused;
+}
+@keyframes marquee-x {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-50% - (var(--gap) / 2)));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  /* Stop the marquee and let users scroll it manually instead. */
+  .marquee {
+    overflow-x: auto;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+}
