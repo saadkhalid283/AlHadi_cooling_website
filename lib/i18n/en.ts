@@ -237,4 +237,17 @@ export const en = {
       mapTitle: "AlHadi Cooling location on the map, Al Safa District, Jeddah",
     },
   },
+  gallery: {
+    eyebrow: "How we work",
+    title: "Every job, done properly",
+    subtitle:
+      "A glimpse of the services we deliver across Jeddah, from quick fixes to full installations and tune-ups.",
+    captions: [
+      "AC Maintenance",
+      "AC Gas Refill",
+      "AC Installation",
+      "Refrigerator Repair",
+      "Washing Machine Repair",
+    ],
+  },
 };

@@ -47,8 +47,8 @@ export const metadata: Metadata = {
   other: {
     "geo.region": "SA-02",
     "geo.placename": "Jeddah",
-    "geo.position": "21.589840;39.197851",
-    ICBM: "21.589840, 39.197851",
+    "geo.position": "21.589838;39.200424",
+    ICBM: "21.589838, 39.200424",
   },
   openGraph: {
     type: "website",

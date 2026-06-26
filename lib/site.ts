@@ -45,7 +45,7 @@ export const site = {
   },
   // Google Maps embed (provided by client - used as-is).
   mapEmbedSrc:
-    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3709.899633670323!2d39.19785147389449!3d21.589840468273966!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15c3d11eb9e6e9f5%3A0xe6be88548d400737!2sAl%20Saraya%20Refrigeration!5e0!3m2!1sen!2s!4v1782401887746!5m2!1sen!2s",
+    "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3709.8996961987427!2d39.20042419433594!3d21.5898380279541!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15c3d11eb9e6e9f5%3A0xe6be88548d400737!2sAl%20Saraya%20Refrigeration!5e0!3m2!1sen!2s!4v1782421548483!5m2!1sen!2s",
   mapDirectionsHref:
-    "https://www.google.com/maps/dir/?api=1&destination=21.589840468273966,39.19785147389449",
+    "https://www.google.com/maps/dir/?api=1&destination=21.5898380279541,39.20042419433594",
 } as const;

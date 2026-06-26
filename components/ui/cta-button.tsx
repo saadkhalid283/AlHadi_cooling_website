@@ -2,13 +2,14 @@
 
 import { cn } from "@/lib/utils";
 
-type Variant = "call" | "whatsapp" | "outline";
+type Variant = "call" | "whatsapp" | "outline" | "light";
 
 const variants: Record<Variant, string> = {
   call: "bg-brand text-white shadow-cta hover:brightness-110",
   whatsapp: "bg-whatsapp text-white shadow-cta hover:brightness-110",
   outline:
     "border border-border bg-white text-brand-ink hover:border-brand hover:text-brand",
+  light: "bg-white text-brand-ink shadow-cta hover:bg-sky-soft",
 };
 
 export function CtaButton({

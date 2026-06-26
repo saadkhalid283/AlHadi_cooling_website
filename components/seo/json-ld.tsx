@@ -34,8 +34,8 @@ export function JsonLd() {
     },
     geo: {
       "@type": "GeoCoordinates",
-      latitude: 21.589840468273966,
-      longitude: 39.19785147389449,
+      latitude: 21.5898380279541,
+      longitude: 39.20042419433594,
     },
     hasMap: site.mapDirectionsHref,
     areaServed: { "@type": "City", name: "Jeddah" },
