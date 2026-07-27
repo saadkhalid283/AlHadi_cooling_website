@@ -1,7 +1,9 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import { Inter, Cairo } from "next/font/google";
 import { LanguageProvider } from "@/components/providers/language-provider";
 import { JsonLd } from "@/components/seo/json-ld";
+import { ConversionTracking } from "@/components/conversion/conversion-tracking";
 import { site } from "@/lib/site";
 import "./globals.css";
 
@@ -94,9 +96,23 @@ export default function RootLayout({
     <html lang="ar" dir="rtl" className={`${inter.variable} ${cairo.variable}`}>
       <head>
         <script dangerouslySetInnerHTML={{ __html: noFlashScript }} />
+        {/* Google tag (gtag.js) - loads on every page, deduped by next/script's default "afterInteractive" strategy */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=AW-18342747744"
+          strategy="afterInteractive"
+        />
+        <Script id="google-tag" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'AW-18342747744');
+          `}
+        </Script>
       </head>
       <body>
         <JsonLd />
+        <ConversionTracking />
         <LanguageProvider>{children}</LanguageProvider>
       </body>
     </html>
