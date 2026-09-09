@@ -2,14 +2,8 @@
 
 import {
   AirVent,
-  Wrench,
-  Settings2,
-  Gauge,
-  Fan,
   Refrigerator,
   WashingMachine,
-  Snowflake,
-  GlassWater,
   MessageCircle,
   ArrowRight,
   type LucideIcon,
@@ -19,30 +13,29 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/ui/reveal";
 import { CtaButton } from "@/components/ui/cta-button";
 import { site } from "@/lib/site";
-import { cn } from "@/lib/utils";
 
-const ICONS: LucideIcon[] = [
-  AirVent, // 0 AC Installation
-  Wrench, // 1 AC Repair
-  Settings2, // 2 AC Maintenance
-  Gauge, // 3 AC Gas Refill
-  Fan, // 4 Duct Cleaning
-  Refrigerator, // 5 Refrigerator Repair
-  WashingMachine, // 6 Washing Machine Repair
-  Snowflake, // 7 Freezer Repair
-  GlassWater, // 8 Water Cooler Repair
+/**
+ * Services grouped by appliance family rather than laid out as one flat grid.
+ *
+ * The previous bento gave AC two feature tiles and buried refrigeration and
+ * laundry among seven equal squares, which told a fridge customer this is an
+ * AC company. Three columns of equal weight, each led by a real job photo,
+ * says the opposite.
+ *
+ * Indexes map into t.services.items so the footer keeps its flat list.
+ */
+const CATEGORIES: {
+  icon: LucideIcon;
+  photo: string;
+  itemIndexes: number[];
+}[] = [
+  { icon: AirVent, photo: "/images/work-install.webp", itemIndexes: [1, 0, 2, 3, 4] },
+  { icon: Refrigerator, photo: "/images/work-fridge.webp", itemIndexes: [5, 7, 8] },
+  { icon: WashingMachine, photo: "/images/work-washer.webp", itemIndexes: [6] },
 ];
-
-type Variant = "dark" | "soft" | "plain";
-
-// Bento order + emphasis: AC Repair (dark hero tile) and AC Installation (soft
-// wide tile) lead, the rest follow as compact tiles.
-const ORDER = [1, 0, 2, 3, 4, 5, 6, 7, 8];
-const FEATURE: Record<number, Variant> = { 1: "dark", 0: "soft" };
 
 export function Services() {
   const { t, locale } = useLanguage();
-  const bookLabel = locale === "ar" ? "احجز عبر واتساب" : "Book on WhatsApp";
 
   const bookMsg = (service: string) =>
     locale === "ar"
@@ -55,7 +48,7 @@ export function Services() {
       : "Hi, I have a question about a service that isn't listed. Can you help?";
 
   return (
-    <section id="services" className="section scroll-mt-20">
+    <section id="services" className="section scroll-mt-24 bg-paper">
       <div className="container-page">
         <Reveal>
           <SectionHeading
@@ -65,145 +58,98 @@ export function Services() {
           />
         </Reveal>
 
-        <div className="mt-12 grid grid-cols-2 gap-4 lg:grid-cols-4">
-          {ORDER.map((idx, pos) => {
-            const item = t.services.items[idx];
-            const Icon = ICONS[idx] ?? Wrench;
-            const variant: Variant = FEATURE[idx] ?? "plain";
-            const isFeature = variant !== "plain";
+        <div className="mt-12 grid gap-6 lg:grid-cols-3">
+          {CATEGORIES.map((cat, ci) => {
+            const meta = t.services.categories[ci];
+            const Icon = cat.icon;
             return (
               <Reveal
                 as="article"
-                key={item.title}
-                delay={(pos % 4) * 0.05}
-                className={cn(
-                  "group",
-                  isFeature ? "col-span-2" : "col-span-1",
-                )}
+                key={meta.name}
+                delay={ci * 0.07}
+                className="flex h-full"
               >
-                <ServiceTile
-                  variant={variant}
-                  Icon={Icon}
-                  title={item.title}
-                  desc={item.desc}
-                  href={site.whatsappHref(bookMsg(item.title))}
-                  bookLabel={bookLabel}
-                />
+                <div className="flex h-full w-full flex-col overflow-hidden rounded-lg border border-border bg-white">
+                  <div className="relative">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={cat.photo}
+                      alt=""
+                      width={520}
+                      height={280}
+                      loading="lazy"
+                      className="h-40 w-full object-cover"
+                    />
+                    <span className="absolute bottom-0 flex items-center gap-2 rounded-tl-lg bg-white px-3.5 py-2.5 text-brand ltr:right-0 ltr:rounded-tl-lg rtl:left-0 rtl:rounded-tl-none rtl:rounded-tr-lg">
+                      <Icon className="h-5 w-5" aria-hidden />
+                    </span>
+                  </div>
+
+                  <div className="flex flex-1 flex-col p-5">
+                    <h3 className="display text-xl text-brand-ink">
+                      {meta.name}
+                    </h3>
+                    <p className="mt-1.5 text-sm leading-relaxed text-brand-muted">
+                      {meta.tagline}
+                    </p>
+
+                    <ul className="mt-5 flex-1 divide-y divide-border border-y border-border">
+                      {cat.itemIndexes.map((idx) => {
+                        const item = t.services.items[idx];
+                        if (!item) return null;
+                        return (
+                          <li key={item.title}>
+                            <a
+                              href={site.whatsappHref(bookMsg(item.title))}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="group flex items-center justify-between gap-3 py-3 text-sm font-semibold text-brand-ink transition-colors hover:text-brand"
+                            >
+                              {item.title}
+                              <ArrowRight
+                                className="h-4 w-4 shrink-0 text-sky opacity-0 transition-all duration-200 group-hover:translate-x-0.5 group-hover:opacity-100 group-focus-visible:opacity-100 rtl:rotate-180 rtl:group-hover:-translate-x-0.5"
+                                aria-hidden
+                              />
+                            </a>
+                          </li>
+                        );
+                      })}
+                    </ul>
+
+                    <CtaButton
+                      href={site.whatsappHref(bookMsg(meta.name))}
+                      variant="outline"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-5 w-full"
+                    >
+                      <MessageCircle className="h-4 w-4" aria-hidden />
+                      {t.cta.bookNow}
+                    </CtaButton>
+                  </div>
+                </div>
               </Reveal>
             );
           })}
-
-          {/* "Not listed" CTA tile fills the final grid slot */}
-          <Reveal className="col-span-2 lg:col-span-1">
-            <div className="flex h-full flex-col justify-between gap-4 rounded-2xl border border-dashed border-brand/30 bg-sky-soft/50 p-5">
-              <p className="text-sm font-semibold text-brand-ink">
-                {t.services.more.text}
-              </p>
-              <CtaButton
-                href={site.whatsappHref(generalMsg)}
-                variant="whatsapp"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full"
-              >
-                <MessageCircle className="h-4 w-4" aria-hidden />
-                {t.services.more.cta}
-              </CtaButton>
-            </div>
-          </Reveal>
         </div>
+
+        <Reveal className="mt-8">
+          <div className="flex flex-col items-center justify-between gap-4 rounded-lg border border-dashed border-brand/35 bg-sky-soft px-6 py-5 sm:flex-row">
+            <p className="text-sm font-semibold text-brand-ink">
+              {t.services.more.text}
+            </p>
+            <CtaButton
+              href={site.whatsappHref(generalMsg)}
+              variant="whatsapp"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <MessageCircle className="h-4 w-4" aria-hidden />
+              {t.services.more.cta}
+            </CtaButton>
+          </div>
+        </Reveal>
       </div>
     </section>
-  );
-}
-
-function ServiceTile({
-  variant,
-  Icon,
-  title,
-  desc,
-  href,
-  bookLabel,
-}: {
-  variant: Variant;
-  Icon: LucideIcon;
-  title: string;
-  desc: string;
-  href: string;
-  bookLabel: string;
-}) {
-  const dark = variant === "dark";
-  const soft = variant === "soft";
-  const isFeature = dark || soft;
-
-  return (
-    <div
-      className={cn(
-        "flex h-full flex-col rounded-2xl border p-5 shadow-card transition-all duration-200 hover:-translate-y-1 sm:p-6",
-        dark && "border-transparent text-white",
-        soft && "border-brand/10 bg-sky-soft",
-        variant === "plain" && "border-border bg-white hover:border-brand/40",
-        soft && "hover:border-brand/30",
-      )}
-      style={
-        dark
-          ? {
-              backgroundImage:
-                "linear-gradient(155deg,#0e3a5c 0%,#0c4f86 55%,#0a6bb8 100%)",
-            }
-          : undefined
-      }
-    >
-      <span
-        className={cn(
-          "grid place-items-center rounded-xl transition-colors duration-200",
-          isFeature ? "h-12 w-12" : "h-11 w-11",
-          dark
-            ? "bg-white/15 text-white"
-            : "bg-sky-soft text-brand group-hover:bg-brand group-hover:text-white",
-          soft && "bg-white",
-        )}
-      >
-        <Icon className={isFeature ? "h-6 w-6" : "h-5 w-5"} aria-hidden />
-      </span>
-
-      <h3
-        className={cn(
-          "mt-4 font-bold",
-          isFeature ? "text-xl" : "text-base",
-          dark ? "text-white" : "text-brand-ink",
-        )}
-      >
-        {title}
-      </h3>
-
-      <p
-        className={cn(
-          "mt-2 flex-1 leading-relaxed",
-          isFeature ? "text-sm" : "text-[13px]",
-          dark ? "text-white/80" : "text-brand-muted",
-        )}
-      >
-        {desc}
-      </p>
-
-      <a
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={`${bookLabel}: ${title}`}
-        className={cn(
-          "mt-4 inline-flex items-center gap-1.5 text-sm font-semibold transition-colors",
-          dark ? "text-white hover:text-sky" : "text-brand hover:text-brand-ink",
-        )}
-      >
-        <MessageCircle className="h-4 w-4" aria-hidden />
-        {bookLabel}
-        <ArrowRight
-          className="h-4 w-4 transition-transform group-hover:translate-x-1 rtl:rotate-180 rtl:group-hover:-translate-x-1"
-          aria-hidden
-        />
-      </a>
-    </div>
   );
 }

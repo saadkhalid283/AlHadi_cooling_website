@@ -21,31 +21,73 @@ export const en = {
     emergency: "24/7 Emergency",
   },
   hero: {
-    badge: "24/7 Emergency Service · Jeddah",
-    titleLead: "AC trouble in Jeddah?",
-    titleAccent: "We'll get you cool again, today.",
+    status: "Open now. We answer 24/7 across Jeddah.",
+    problems: ["AC not cooling?", "Fridge warm?", "Washer stuck?"],
+    titleSolve: "One Jeddah team fixes all three. Today.",
     subtitle:
-      "Fast, reliable AC installation, repair & maintenance, plus full home-appliance service across Jeddah. Every fix backed by our written guarantee.",
-    responseNote: "We answer 24/7. Typical response under 60 minutes.",
-    panel: {
-      sameDay: "Same-day service",
-      guarantee: "Guaranteed repairs",
-      emergency: "24/7 emergency call-out",
-      jobsValue: "2,000+",
-      jobsLabel: "jobs completed across Jeddah",
+      "16+ years repairing air conditioning, refrigerators and washing machines across Jeddah. You get a clear price before we start, and every repair is backed by our written guarantee.",
+    priceNote:
+      "We agree the price with you before any work begins. No hidden charges and no surprises on the bill.",
+    imageAlt:
+      "An AlHadi Cooling technician servicing a refrigerator in a Jeddah home, with a wall-mounted air conditioner and a washing machine in the same room",
+    imageCaption: "One technician, one visit: AC, refrigeration and laundry.",
+    responseValue: "Under 60 min",
+    responseLabel: "Typical emergency response time",
+    guaranteeValue: "Written guarantee",
+    guaranteeLabel: "On every repair we carry out",
+    certifiedValue: "Certified technicians",
+    certifiedLabel: "Trained and qualified, not subcontracted",
+    experienceValue: "16+ years experience",
+    appliances: {
+      heading: "What needs fixing?",
+      cta: "Get help now",
+      items: [
+        {
+          label: "Air Conditioning",
+          symptoms: ["Not cooling", "Water leak", "Loud noise", "Needs gas"],
+          waMessage:
+            "Hi AlHadi Cooling, I have a problem with my air conditioner. Can you help?",
+        },
+        {
+          label: "Fridge & Freezer",
+          symptoms: ["Warm inside", "Not freezing", "Leaking", "Running loud"],
+          waMessage:
+            "Hi AlHadi Cooling, I have a problem with my refrigerator/freezer. Can you help?",
+        },
+        {
+          label: "Washing Machine",
+          symptoms: ["Will not drain", "Will not spin", "Error code", "Leaking"],
+          waMessage:
+            "Hi AlHadi Cooling, I have a problem with my washing machine. Can you help?",
+        },
+      ],
     },
     stats: {
-      years: "16+ years experience",
-      jobs: "2,000+ jobs done",
-      area: "All Jeddah covered",
+      years: "16+ years in Jeddah",
+      jobs: "2,000+ jobs completed",
+      area: "All Jeddah districts",
       guarantee: "Licensed & guaranteed",
     },
   },
   services: {
     eyebrow: "What we do",
-    title: "Services for every cooling need",
+    title: "AC, fridges and washing machines",
     subtitle:
-      "One trusted team for your AC and home appliances across Jeddah, with fast response and guaranteed work.",
+      "One trusted team for every appliance in your home or business across Jeddah, with fast response and guaranteed work.",
+    categories: [
+      {
+        name: "Air Conditioning",
+        tagline: "Split, window and central units. Any brand.",
+      },
+      {
+        name: "Refrigeration",
+        tagline: "Fridges, freezers and water coolers, home or commercial.",
+      },
+      {
+        name: "Washing Machines",
+        tagline: "Front and top-load machines, all major brands.",
+      },
+    ],
     items: [
       {
         title: "AC Installation",
@@ -89,6 +131,30 @@ export const en = {
       cta: "Ask us on WhatsApp",
     },
   },
+  process: {
+    eyebrow: "What happens next",
+    title: "From your message to a working machine",
+    subtitle:
+      "No call centre, no waiting on a quote you never asked for. Four steps, and you know the price before anyone picks up a tool.",
+    steps: [
+      {
+        title: "Tell us what is wrong",
+        desc: "Call or send one WhatsApp message. A photo of the unit or the error code helps us arrive with the right parts.",
+      },
+      {
+        title: "We agree the price",
+        desc: "You get a clear quote for the work before we start. If you do not want to go ahead, that is fine.",
+      },
+      {
+        title: "A technician comes to you",
+        desc: "Same day across Jeddah wherever we can, and within the hour for emergencies. We arrive with tools and common parts.",
+      },
+      {
+        title: "Fixed, and guaranteed",
+        desc: "We test the repair with you, clean up, and back the work with our written guarantee.",
+      },
+    ],
+  },
   why: {
     eyebrow: "Why AlHadi",
     title: "Why Jeddah trusts AlHadi Cooling",
@@ -100,8 +166,8 @@ export const en = {
         desc: "We answer 24/7 and aim to reach you the same day, often within the hour for emergencies.",
       },
       {
-        title: "Skilled, experienced technicians",
-        desc: "16+ years and 2,000+ jobs across Jeddah, trained on every major AC and appliance brand.",
+        title: "Certified, experienced technicians",
+        desc: "Qualified technicians on our own team, not subcontractors. 16+ years and 2,000+ jobs across Jeddah, trained on every major AC and appliance brand.",
       },
       {
         title: "Transparent pricing",
@@ -131,11 +197,15 @@ export const en = {
       subtitle: "Talk to a real technician now, no call centers.",
     },
   },
+  // ⚠️ PLACEHOLDER TESTIMONIALS — the names and quotes below were written as
+  // filler, not collected from real customers. Replace with real Google
+  // reviews before running paid traffic: invented testimonials breach Google
+  // Ads policy and are the fastest way to lose a skeptical buyer.
   reviews: {
     eyebrow: "Customer stories",
     title: "Loved by homes and businesses in Jeddah",
     subtitle:
-      "A few words from customers we have helped across the city. Swap these for your own once you collect them.",
+      "What people across Jeddah say after we have been out to fix something.",
     items: [
       {
         rating: 5,

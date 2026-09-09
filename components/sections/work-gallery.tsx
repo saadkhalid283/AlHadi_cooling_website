@@ -26,7 +26,7 @@ export function WorkGallery() {
       {items.map((item, i) => (
         <figure
           key={`${hidden ? "b" : "a"}-${i}`}
-          className="relative w-[280px] shrink-0 overflow-hidden rounded-2xl shadow-card ring-1 ring-black/5 sm:w-[340px]"
+          className="relative w-[280px] shrink-0 overflow-hidden rounded-lg shadow-card ring-1 ring-black/5 sm:w-[340px]"
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -41,7 +41,7 @@ export function WorkGallery() {
             aria-hidden
             className="absolute inset-0 bg-gradient-to-t from-brand-deep/80 via-transparent to-transparent"
           />
-          <figcaption className="absolute bottom-3 inline-flex items-center rounded-full bg-white/90 px-3 py-1 text-xs font-bold text-brand-ink shadow-sm backdrop-blur ltr:left-3 rtl:right-3">
+          <figcaption className="absolute bottom-3 inline-flex items-center rounded bg-white px-3 py-1.5 text-xs font-bold text-brand-ink ltr:left-3 rtl:right-3">
             {item.caption}
           </figcaption>
         </figure>
@@ -54,6 +54,7 @@ export function WorkGallery() {
       <div className="container-page">
         <Reveal>
           <SectionHeading
+            align="center"
             eyebrow={t.gallery.eyebrow}
             title={t.gallery.title}
             subtitle={t.gallery.subtitle}

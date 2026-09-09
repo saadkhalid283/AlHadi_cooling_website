@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
-import { Inter, Cairo } from "next/font/google";
+import { Inter, Archivo, Cairo } from "next/font/google";
 import { LanguageProvider } from "@/components/providers/language-provider";
 import { JsonLd } from "@/components/seo/json-ld";
 import { ConversionTracking } from "@/components/conversion/conversion-tracking";
@@ -13,6 +13,15 @@ const inter = Inter({
   display: "swap",
 });
 
+// Sturdy grotesque for display type - gives the brand a workshop-built
+// character rather than the default geometric-sans look.
+const archivo = Archivo({
+  subsets: ["latin"],
+  variable: "--font-display",
+  weight: ["600", "700", "800"],
+  display: "swap",
+});
+
 const cairo = Cairo({
   subsets: ["arabic", "latin"],
   variable: "--font-arabic",
@@ -20,7 +29,7 @@ const cairo = Cairo({
 });
 
 const description =
-  "AlHadi Cooling: fast, reliable AC installation, repair, maintenance and appliance service in Jeddah. 16+ years experience, 2000+ jobs done. 24/7 emergency service.";
+  "Certified technicians repairing air conditioners, refrigerators and washing machines across Jeddah. Price agreed before we start, written guarantee on every repair. 16+ years, 2,000+ jobs, 24/7 emergency call-out.";
 
 export const metadata: Metadata = {
   title: `${site.name.en} | ${site.tagline.en}`,
@@ -35,6 +44,11 @@ export const metadata: Metadata = {
     "HVAC Jeddah",
     "refrigerator repair Jeddah",
     "washing machine repair Jeddah",
+    "fridge repair Jeddah",
+    "freezer repair Jeddah",
+    "appliance repair Jeddah",
+    "صيانة غسالات جدة",
+    "صيانة ثلاجات جدة",
     "تكييف جدة",
     "صيانة مكيفات جدة",
     "إصلاح مكيفات جدة",
@@ -93,7 +107,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ar" dir="rtl" className={`${inter.variable} ${cairo.variable}`}>
+    // noFlashScript rewrites lang/dir from localStorage before hydration, so the
+    // server's "ar" default legitimately differs from the client on first paint.
+    <html
+      lang="ar"
+      dir="rtl"
+      suppressHydrationWarning
+      className={`${inter.variable} ${archivo.variable} ${cairo.variable}`}
+    >
       <head>
         <script dangerouslySetInnerHTML={{ __html: noFlashScript }} />
         {/* Google tag (gtag.js) - loads on every page, deduped by next/script's default "afterInteractive" strategy */}

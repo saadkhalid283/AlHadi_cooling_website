@@ -12,8 +12,8 @@ export const site = {
     ar: "الهادي للتبريد",
   },
   tagline: {
-    en: "AC & Appliance Repair in Jeddah",
-    ar: "صيانة المكيفات والأجهزة في جدة",
+    en: "AC, Fridge & Washing Machine Repair in Jeddah",
+    ar: "صيانة المكيفات والثلاجات والغسالات في جدة",
   },
   phoneE164: PHONE_E164,
   phoneDisplay: "+966 58 029 4257",

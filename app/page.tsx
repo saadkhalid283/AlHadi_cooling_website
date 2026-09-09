@@ -3,6 +3,7 @@ import { Footer } from "@/components/layout/footer";
 import { Hero } from "@/components/sections/hero";
 import { WorkGallery } from "@/components/sections/work-gallery";
 import { Services } from "@/components/sections/services";
+import { Process } from "@/components/sections/process";
 import { WhyUs } from "@/components/sections/why-us";
 import { Reviews } from "@/components/sections/reviews";
 import { Faq } from "@/components/sections/faq";
@@ -18,9 +19,10 @@ export default function Home() {
       <Header />
       <main id="main" className="pb-16 sm:pb-0">
         <Hero />
-        <WorkGallery />
         <Services />
+        <Process />
         <WhyUs />
+        <WorkGallery />
         <Reviews />
         <Faq />
         <Contact />

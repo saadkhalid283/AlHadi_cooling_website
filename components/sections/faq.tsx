@@ -31,7 +31,7 @@ export function Faq() {
             />
           </Reveal>
           <Reveal className="mt-8" delay={0.1}>
-            <div className="rounded-2xl border border-border bg-white p-6 shadow-card">
+            <div className="rounded-lg border border-border bg-white p-6 shadow-card">
               <p className="font-bold text-brand-ink">{t.faq.help.title}</p>
               <p className="mt-1 text-sm text-brand-muted">
                 {t.faq.help.subtitle}
@@ -63,7 +63,7 @@ export function Faq() {
             return (
               <li
                 key={item.q}
-                className="overflow-hidden rounded-2xl border border-border bg-white shadow-card"
+                className="overflow-hidden rounded-lg border border-border bg-white shadow-card"
               >
                 <h3>
                   <button

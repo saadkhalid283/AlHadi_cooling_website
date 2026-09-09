@@ -1,11 +1,15 @@
 import { cn } from "@/lib/utils";
 
-/** Shared section header: eyebrow + title + subtitle. Reused across sections. */
+/**
+ * Shared section header. The `align` prop exists so sections can break the
+ * centered rhythm — six identically centered headings in a row is the single
+ * biggest reason a page reads as machine-generated.
+ */
 export function SectionHeading({
   eyebrow,
   title,
   subtitle,
-  align = "center",
+  align = "start",
   className,
 }: {
   eyebrow?: string;
@@ -17,19 +21,19 @@ export function SectionHeading({
   return (
     <div
       className={cn(
-        "max-w-2xl",
-        align === "center" ? "mx-auto text-center" : "text-start",
+        align === "center" ? "mx-auto max-w-2xl text-center" : "max-w-3xl text-start",
         className,
       )}
     >
-      {eyebrow && (
-        <span className="text-sm font-bold uppercase tracking-wider text-brand">
-          {eyebrow}
-        </span>
-      )}
-      <h2 className="mt-2 text-3xl sm:text-4xl">{title}</h2>
+      {eyebrow && <span className="eyebrow">{eyebrow}</span>}
+      <h2 className="display mt-3 text-[2rem] sm:text-[2.6rem]">{title}</h2>
       {subtitle && (
-        <p className="mt-4 text-lg leading-relaxed text-brand-muted">
+        <p
+          className={cn(
+            "mt-4 text-lg leading-relaxed text-brand-muted",
+            align === "start" && "max-w-2xl",
+          )}
+        >
           {subtitle}
         </p>
       )}
