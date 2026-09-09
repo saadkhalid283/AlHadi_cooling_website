@@ -37,6 +37,7 @@ export function Reviews() {
       <div className="container-page">
         <Reveal>
           <SectionHeading
+            align="center"
             eyebrow={t.reviews.eyebrow}
             title={t.reviews.title}
             subtitle={t.reviews.subtitle}
@@ -100,7 +101,7 @@ function MarqueeRow({
 
 function ReviewCard({ review }: { review: Review }) {
   return (
-    <figure className="flex w-[300px] shrink-0 flex-col rounded-2xl border border-border bg-white p-6 shadow-card sm:w-[360px]">
+    <figure className="flex w-[300px] shrink-0 flex-col rounded-lg border border-border bg-white p-6 shadow-card sm:w-[360px]">
       <Quote className="h-7 w-7 text-sky" aria-hidden />
       <div
         className="mt-3 flex gap-0.5 text-amber-400"

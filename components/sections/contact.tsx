@@ -40,8 +40,8 @@ export function Contact() {
           {/* Left: contact details */}
           <Reveal className="flex flex-col gap-4">
             {/* Emergency highlight */}
-            <div className="flex items-start gap-4 rounded-2xl border border-warm/30 bg-warm/10 p-5">
-              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-warm/15 text-warm">
+            <div className="flex items-start gap-4 rounded-lg border border-warm/30 bg-warm/10 p-5">
+              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-warm/15 text-ember-ink">
                 <Siren className="h-6 w-6" aria-hidden />
               </span>
               <div className="flex-1">
@@ -104,7 +104,7 @@ export function Contact() {
 
           {/* Right: map */}
           <Reveal delay={0.1} className="flex flex-col gap-3">
-            <div className="overflow-hidden rounded-2xl border border-border shadow-card">
+            <div className="overflow-hidden rounded-lg border border-border shadow-card">
               <div className="aspect-[4/3] w-full lg:aspect-auto lg:h-[460px]">
                 <iframe
                   src={site.mapEmbedSrc}
@@ -155,7 +155,7 @@ function ActionCard({
     <a
       href={href}
       {...ext}
-      className="group flex items-center gap-3 rounded-2xl border border-border bg-white p-5 shadow-card transition-all duration-200 hover:-translate-y-0.5 hover:border-brand/40"
+      className="group flex items-center gap-3 rounded-lg border border-border bg-white p-5 shadow-card transition-colors duration-200 hover:border-brand"
     >
       <span
         className={`grid h-11 w-11 shrink-0 place-items-center rounded-xl text-white ${
@@ -203,7 +203,7 @@ function InfoCard({
         <span className="block text-xs text-brand-muted">{label}</span>
         <span className="block font-medium text-brand-ink">{value}</span>
         {note && (
-          <span className="mt-1 inline-block text-xs font-semibold text-warm">
+          <span className="mt-1 inline-block text-xs font-semibold text-ember-ink">
             {note}
           </span>
         )}
@@ -218,13 +218,13 @@ function InfoCard({
   );
 
   const base =
-    "flex items-start gap-3 rounded-2xl border border-border bg-white p-5 shadow-card";
+    "flex items-start gap-3 rounded-lg border border-border bg-white p-5 shadow-card";
 
   return href ? (
     <a
       href={href}
       {...ext}
-      className={`${base} group transition-all duration-200 hover:-translate-y-0.5 hover:border-brand/40`}
+      className={`${base} group transition-colors duration-200 hover:border-brand`}
     >
       {inner}
     </a>

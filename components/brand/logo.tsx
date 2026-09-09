@@ -36,6 +36,9 @@ export function LogoMark({
           </linearGradient>
         </defs>
       )}
+      {/* Mono sits on unknown ground (e.g. white text on the dark footer), so
+          the badge is a tinted currentColor plate and the flake is drawn in
+          currentColor too — filling both solid made them cancel out. */}
       <rect
         x="2"
         y="2"
@@ -43,9 +46,13 @@ export function LogoMark({
         height="44"
         rx="13"
         fill={tone === "color" ? `url(#${uid})` : "currentColor"}
+        fillOpacity={tone === "color" ? 1 : 0.16}
+        stroke={tone === "color" ? undefined : "currentColor"}
+        strokeOpacity={tone === "color" ? undefined : 0.4}
+        strokeWidth={tone === "color" ? undefined : 1.5}
       />
       <g
-        stroke={tone === "color" ? "#fff" : "hsl(0 0% 100% / 0.96)"}
+        stroke={tone === "color" ? "#fff" : "currentColor"}
         strokeWidth="2.3"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -58,7 +65,12 @@ export function LogoMark({
           </g>
         ))}
       </g>
-      <circle cx="24" cy="24" r="2.6" fill={tone === "color" ? "hsl(189 84% 60%)" : "#fff"} />
+      <circle
+        cx="24"
+        cy="24"
+        r="2.6"
+        fill={tone === "color" ? "hsl(189 84% 60%)" : "currentColor"}
+      />
     </svg>
   );
 }

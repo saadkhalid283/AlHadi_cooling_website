@@ -4,24 +4,40 @@
 
 @layer base {
   :root {
-    /* AlHadi Cooling brand palette (Phase 2)        Cool, premium, AA-accessible. Sky #A1C9F2 kept as ACCENT only -
-       it fails AA as text on white, so text/CTAs use the deeper blues. */
-    --brand-sky: 210 73% 79%;        /* #A1C9F2 - signature accent */
-    --brand-sky-soft: 205 80% 96%;   /* #EEF6FD - soft section tint */
-    --brand: 201 90% 38%;            /* #0A6BB8 - primary CTA (AA on white) */
-    --brand-deep: 205 74% 22%;       /* #0E3A5C - gradient / footer base */
-    --brand-ink: 209 64% 17%;        /* #0E2A45 - headings */
-    --brand-muted: 209 18% 40%;      /* #545E6B - body text */
-    --cyan: 189 84% 42%;             /* #11A8C4 - fresh secondary accent */
-    --accent-warm: 14 88% 58%;       /* #F0613A - emergency / urgency pop */
+    /* ── AlHadi Cooling — "Heat → Cool" system ───────────────────────
+       The palette encodes the job: EMBER marks the problem (heat, fault,
+       urgency), BLUE/ICE marks the resolution. Ground is warm paper, not
+       pure white, so the cool blues read as genuinely cool against it. */
 
-    --background: 0 0% 100%;
-    --foreground: 209 18% 40%;
-    --border: 210 28% 90%;
-    --accent: 210 73% 79%;
-    --whatsapp: 142 70% 45%;
+    --paper: 36 33% 98%;             /* #FCFAF7  page ground, warm off-white */
+    --paper-2: 34 24% 96%;           /* #F7F4F0  alternating band */
 
-    --radius: 0.875rem;
+    --brand-ink: 205 58% 12%;        /* #0D2231  headings, near-black navy */
+    --ink-strong: 206 66% 8%;        /* #071823  footer / max contrast */
+    --brand-muted: 206 14% 42%;      /* #5C6A77  body copy */
+    --steel: 206 12% 55%;            /* #7C8894  meta / captions */
+
+    --brand: 205 90% 31%;            /* #08578F  primary action, AA on paper */
+    --brand-deep: 206 72% 17%;       /* #0C2E4A  deep panels */
+    --brand-sky: 205 72% 76%;        /* #9AC6EC  accent only, never text */
+    --brand-sky-soft: 202 58% 95%;   /* #EBF4FA  ice tint */
+    --ice-line: 203 44% 87%;         /* #D3E4F0  cool hairline */
+
+    --accent-warm: 16 88% 50%;       /* #F04E15  ember, decorative only */
+    --ember-cta: 16 86% 44%;         /* #D14310  ember for filled CTAs: 4.6:1 with white */
+    --ember-soft: 24 100% 96%;       /* #FFF1E9  ember tint */
+    --ember-ink: 15 82% 38%;         /* #B03410  ember text, AA on paper */
+
+    --cyan: 189 84% 36%;             /* #0E93AB  secondary accent */
+    --whatsapp: 142 70% 40%;         /* #1FA855  AA-safe WhatsApp green */
+
+    --background: 36 33% 98%;
+    --foreground: 206 14% 42%;
+    --border: 210 20% 89%;
+    --accent: 205 72% 76%;
+
+    /* Architectural, not SaaS-soft. */
+    --radius: 0.5rem;
   }
 
   * {
@@ -34,7 +50,7 @@
   }
 
   body {
-    background-color: hsl(var(--background));
+    background-color: hsl(var(--paper));
     color: hsl(var(--brand-muted));
     font-family: var(--font-sans), system-ui, sans-serif;
     text-rendering: optimizeLegibility;
@@ -47,13 +63,30 @@
 
   h1, h2, h3, h4 {
     color: hsl(var(--brand-ink));
+    font-family: var(--font-display), var(--font-sans), system-ui, sans-serif;
     font-weight: 700;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.025em;
+  }
+
+  /* Arabic needs more leading and no negative tracking to stay legible. */
+  [dir="rtl"] h1,
+  [dir="rtl"] h2,
+  [dir="rtl"] h3,
+  [dir="rtl"] h4 {
+    font-family: var(--font-arabic), system-ui, sans-serif;
+    letter-spacing: 0;
+    line-height: 1.35;
   }
 
   :focus-visible {
     outline: 2px solid hsl(var(--brand));
-    outline-offset: 2px;
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    background: hsl(var(--brand-sky));
+    color: hsl(var(--brand-ink));
   }
 }
 
@@ -63,6 +96,32 @@
   }
   .section {
     @apply py-16 sm:py-20 lg:py-24;
+  }
+
+  /* Display type: tight, confident, no gradient tricks. */
+  .display {
+    @apply font-extrabold leading-[1.04] tracking-[-0.035em];
+  }
+  [dir="rtl"] .display {
+    @apply leading-[1.28] tracking-normal;
+  }
+
+  /* Eyebrow: small caps rule instead of the generic coloured chip. */
+  .eyebrow {
+    @apply inline-flex items-center gap-2.5 text-[0.7rem] font-bold uppercase tracking-[0.16em] text-brand;
+  }
+  [dir="rtl"] .eyebrow {
+    @apply tracking-normal text-xs;
+  }
+  .eyebrow::before {
+    content: "";
+    @apply h-px w-6 bg-brand/50;
+  }
+
+  /* Hairline card: crisp edge + tiny offset, never a blurry cloud. */
+  .card-edge {
+    @apply rounded-lg border border-border bg-white;
+    box-shadow: 0 1px 0 hsl(var(--border));
   }
 }
 

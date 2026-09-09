@@ -29,7 +29,7 @@ export function WhyUs() {
   return (
     <section
       id="why-us"
-      className="section scroll-mt-20 bg-sky-soft/40"
+      className="section scroll-mt-24 bg-paper-alt"
     >
       <div className="container-page">
         <Reveal>
@@ -50,8 +50,8 @@ export function WhyUs() {
                 delay={(i % 3) * 0.06}
                 className="group h-full"
               >
-                <div className="flex h-full gap-4 rounded-2xl border border-border bg-white p-6 shadow-card transition-all duration-200 hover:-translate-y-1 hover:border-brand/40">
-                  <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-sky-soft text-brand transition-colors duration-200 group-hover:bg-brand group-hover:text-white">
+                <div className="flex h-full gap-4 rounded-lg border border-border bg-white p-6 transition-colors duration-200 hover:border-brand">
+                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-md bg-sky-soft text-brand transition-colors duration-200 group-hover:bg-brand group-hover:text-white">
                     <Icon className="h-6 w-6" aria-hidden />
                   </span>
                   <div>
@@ -71,16 +71,12 @@ export function WhyUs() {
         {/* Proof stats band + CTA */}
         <Reveal className="mt-14">
           <div
-            className="overflow-hidden rounded-3xl p-8 text-white lg:p-12"
-            style={{
-              backgroundImage:
-                "linear-gradient(135deg,#0e3a5c 0%,#0a2740 55%,#0c4f86 100%)",
-            }}
+            className="overflow-hidden rounded-lg border border-brand-deep bg-brand-deep p-8 text-white lg:p-12"
           >
             <div className="grid grid-cols-2 gap-6 lg:grid-cols-4">
               {t.why.stats.map((s) => (
                 <div key={s.label} className="text-center lg:text-start">
-                  <p className="text-3xl font-extrabold leading-none sm:text-4xl">
+                  <p className="display text-3xl leading-none sm:text-4xl">
                     {s.value}
                   </p>
                   <p className="mt-2 text-sm text-white/75">{s.label}</p>
