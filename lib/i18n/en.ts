@@ -22,6 +22,7 @@ export const en = {
   },
   menu: {
     open: "Menu",
+    search: "Search",
     close: "Close",
     title: "Find what you need",
     placeholder: "AC, fridge, washing machine…",

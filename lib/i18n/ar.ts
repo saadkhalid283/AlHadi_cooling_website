@@ -24,6 +24,7 @@ export const ar: Dictionary = {
   },
   menu: {
     open: "القائمة",
+    search: "بحث",
     close: "إغلاق",
     title: "ابحث عمّا تحتاجه",
     placeholder: "مكيف، ثلاجة، غسالة…",

@@ -142,14 +142,16 @@ export function FindMenu() {
         onClick={() => setOpen(true)}
         aria-expanded={open}
         aria-haspopup="dialog"
-        className="inline-flex items-center gap-1.5 rounded-md border border-border bg-white px-3 py-2.5 text-sm font-bold text-brand-ink transition-colors hover:border-brand lg:hidden"
+        className="inline-flex items-center gap-1.5 rounded-md border border-border bg-white px-3 py-2.5 text-sm font-bold text-brand-ink transition-colors hover:border-brand"
       >
-        <Menu className="h-[18px] w-[18px]" aria-hidden />
-        <span className="sr-only sm:not-sr-only">{t.menu.open}</span>
+        <Menu className="h-[18px] w-[18px] lg:hidden" aria-hidden />
+        <Search className="hidden h-[18px] w-[18px] lg:block" aria-hidden />
+        <span className="sr-only sm:not-sr-only lg:hidden">{t.menu.open}</span>
+        <span className="hidden lg:inline">{t.menu.search}</span>
       </button>
 
       {open && (
-        <div className="fixed inset-0 z-[60] lg:hidden">
+        <div className="fixed inset-0 z-[60] flex justify-center">
           <div
             className="absolute inset-0 bg-brand-ink/60"
             onClick={close}
@@ -161,7 +163,7 @@ export function FindMenu() {
             role="dialog"
             aria-modal="true"
             aria-label={t.menu.title}
-            className="absolute inset-x-0 top-0 flex flex-col rounded-b-lg bg-paper shadow-lift"
+            className="relative flex w-full flex-col self-start rounded-b-lg bg-paper shadow-lift lg:mt-24 lg:max-w-2xl lg:rounded-lg"
           >
             {/* Filter */}
             <div className="flex items-center gap-2 border-b border-border p-3">
