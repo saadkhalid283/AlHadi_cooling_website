@@ -20,6 +20,19 @@ export const en = {
     langLabel: "العربية",
     emergency: "24/7 Emergency",
   },
+  menu: {
+    open: "Menu",
+    close: "Close",
+    title: "Find what you need",
+    placeholder: "AC, fridge, washing machine…",
+    clear: "Clear",
+    noResults: "Nothing matched that. Message us and we will help.",
+    groups: {
+      sections: "Go to",
+      services: "Services",
+      questions: "Questions",
+    },
+  },
   hero: {
     status: "Open now. We answer 24/7 across Jeddah.",
     problems: ["AC not cooling?", "Fridge warm?", "Washer stuck?"],

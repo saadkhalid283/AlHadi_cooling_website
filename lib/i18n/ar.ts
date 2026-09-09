@@ -22,6 +22,19 @@ export const ar: Dictionary = {
     langLabel: "English",
     emergency: "طوارئ ٢٤/٧",
   },
+  menu: {
+    open: "القائمة",
+    close: "إغلاق",
+    title: "ابحث عمّا تحتاجه",
+    placeholder: "مكيف، ثلاجة، غسالة…",
+    clear: "مسح",
+    noResults: "لا توجد نتائج مطابقة. راسلنا وسنساعدك.",
+    groups: {
+      sections: "انتقل إلى",
+      services: "الخدمات",
+      questions: "الأسئلة",
+    },
+  },
   hero: {
     status: "نعمل الآن. نرد على مدار الساعة في جميع أنحاء جدة.",
     problems: ["المكيف لا يبرّد؟", "الثلاجة دافئة؟", "الغسالة متوقفة؟"],

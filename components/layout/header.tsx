@@ -5,6 +5,7 @@ import { useLanguage } from "@/components/providers/language-provider";
 import { LangToggle } from "@/components/lang-toggle";
 import { CtaButton } from "@/components/ui/cta-button";
 import { Logo } from "@/components/brand/logo";
+import { FindMenu } from "@/components/layout/find-menu";
 import { site } from "@/lib/site";
 
 export function Header() {
@@ -61,6 +62,7 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-2">
+          <FindMenu />
           <LangToggle />
           <CtaButton
             href={site.whatsappHref()}
