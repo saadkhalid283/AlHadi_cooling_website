@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronDown, Phone, MessageCircle } from "lucide-react";
+import { ChevronDown, Phone } from "lucide-react";
+import { WhatsAppIcon } from "@/components/brand/whatsapp-icon";
 import { useLanguage } from "@/components/providers/language-provider";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/ui/reveal";
@@ -30,7 +31,7 @@ export function Faq() {
               align="start"
             />
           </Reveal>
-          <Reveal className="mt-8" delay={0.1}>
+          <Reveal className="mt-8 max-sm:hidden" delay={0.1}>
             <div className="rounded-lg border border-border bg-white p-6 shadow-card">
               <p className="font-bold text-brand-ink">{t.faq.help.title}</p>
               <p className="mt-1 text-sm text-brand-muted">
@@ -48,7 +49,7 @@ export function Faq() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <MessageCircle className="h-4 w-4" aria-hidden />
+                  <WhatsAppIcon className="h-4 w-4" aria-hidden />
                   {t.cta.whatsapp}
                 </CtaButton>
               </div>

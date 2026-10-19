@@ -1,6 +1,6 @@
 "use client";
 
-import { MessageCircle } from "lucide-react";
+import { WhatsAppIcon } from "@/components/brand/whatsapp-icon";
 import { useLanguage } from "@/components/providers/language-provider";
 import { site } from "@/lib/site";
 
@@ -19,7 +19,7 @@ export function FloatingWhatsApp() {
       aria-label={t.common.messageUs}
       className="fixed bottom-5 z-50 hidden h-14 w-14 place-items-center rounded-full bg-whatsapp text-white shadow-lift transition-transform hover:scale-105 active:scale-95 sm:grid ltr:right-5 rtl:left-5"
     >
-      <MessageCircle className="h-7 w-7" aria-hidden />
+      <WhatsAppIcon className="h-7 w-7" aria-hidden />
     </a>
   );
 }

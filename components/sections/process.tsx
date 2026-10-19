@@ -23,7 +23,7 @@ export function Process() {
       <div className="container-page">
         <Reveal>
           <div className="max-w-3xl">
-            <span className="eyebrow !text-sky before:!bg-sky/50">
+            <span className="eyebrow !text-sky before:!bg-sky">
               {t.process.eyebrow}
             </span>
             <h2 className="display mt-3 text-[2rem] text-white sm:text-[2.6rem]">
@@ -35,7 +35,7 @@ export function Process() {
           </div>
         </Reveal>
 
-        <ol className="mt-12 grid gap-px overflow-hidden rounded-lg bg-white/15 sm:grid-cols-2 lg:grid-cols-4">
+        <ol className="mt-8 grid gap-px sm:mt-12 overflow-hidden rounded-lg bg-white/15 sm:grid-cols-2 lg:grid-cols-4">
           {t.process.steps.map((step, i) => {
             const Icon = ICONS[i] ?? MessageCircle;
             return (
@@ -45,7 +45,7 @@ export function Process() {
                 delay={i * 0.06}
                 className="bg-brand-ink"
               >
-                <div className="flex h-full flex-col p-6">
+                <div className="flex h-full flex-col p-4 sm:p-6">
                   <div className="flex items-center justify-between gap-3">
                     <span className="grid h-10 w-10 place-items-center rounded-md bg-white/10 text-sky">
                       <Icon className="h-5 w-5" aria-hidden />

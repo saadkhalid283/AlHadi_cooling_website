@@ -17,15 +17,17 @@ export default function Home() {
     <div id="top">
       <SkipLink />
       <Header />
-      <main id="main" className="pb-16 sm:pb-0">
-        <Hero />
-        <Services />
-        <Process />
-        <WhyUs />
-        <WorkGallery />
-        <Reviews />
-        <Faq />
-        <Contact />
+      {/* Phones reorder visually so proof (job photos + reviews) comes before
+          the process explainer; sm+ keeps the original block flow untouched. */}
+      <main id="main" className="flex flex-col sm:block">
+        <div className="max-sm:order-1"><Hero /></div>
+        <div className="max-sm:order-2"><Services /></div>
+        <div className="max-sm:order-5"><Process /></div>
+        <div className="max-sm:order-6"><WhyUs /></div>
+        <div className="max-sm:order-3"><WorkGallery /></div>
+        <div className="max-sm:order-4"><Reviews /></div>
+        <div className="max-sm:order-7"><Faq /></div>
+        <div className="max-sm:order-8"><Contact /></div>
       </main>
       <Footer />
       <FloatingWhatsApp />

@@ -1,6 +1,7 @@
 "use client";
 
-import { Phone, MessageCircle, Mail, MapPin, Clock } from "lucide-react";
+import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import { WhatsAppIcon } from "@/components/brand/whatsapp-icon";
 import { useLanguage } from "@/components/providers/language-provider";
 import { LogoMark } from "@/components/brand/logo";
 import { site } from "@/lib/site";
@@ -27,9 +28,9 @@ export function Footer() {
   ];
 
   return (
-    <footer className="bg-brand-deep text-white/70">
-      <div className="container-page py-14">
-        <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr_1fr_1.4fr]">
+    <footer className="bg-brand-deep pb-20 text-white/70 sm:pb-0">
+      <div className="container-page py-10 sm:py-14">
+        <div className="grid gap-8 sm:gap-10 lg:grid-cols-[1.4fr_1fr_1fr_1.4fr]">
           {/* Brand */}
           <div>
             <span className="inline-flex items-center gap-2.5 text-white">
@@ -44,7 +45,7 @@ export function Footer() {
           </div>
 
           {/* Quick links */}
-          <nav aria-label="Footer">
+          <nav aria-label="Footer" className="max-sm:hidden">
             <h2 className="text-sm font-bold uppercase tracking-wider text-white">
               {locale === "ar" ? "روابط سريعة" : "Quick links"}
             </h2>
@@ -103,7 +104,7 @@ export function Footer() {
                   rel="noopener noreferrer"
                   className="flex items-center gap-2.5 transition-colors hover:text-sky"
                 >
-                  <MessageCircle className="h-4 w-4 shrink-0 text-sky" aria-hidden />
+                  <WhatsAppIcon className="h-4 w-4 shrink-0 text-sky" aria-hidden />
                   {t.cta.whatsapp}
                 </a>
               </li>

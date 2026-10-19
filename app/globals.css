@@ -95,7 +95,7 @@
     @apply container mx-auto px-6;
   }
   .section {
-    @apply py-16 sm:py-20 lg:py-24;
+    @apply py-12 sm:py-20 lg:py-24;
   }
 
   /* Display type: tight, confident, no gradient tricks. */
@@ -113,9 +113,12 @@
   [dir="rtl"] .eyebrow {
     @apply tracking-normal text-xs;
   }
+  /* Brand snowflake (from the logo) instead of a generic rule. */
   .eyebrow::before {
     content: "";
-    @apply h-px w-6 bg-brand/50;
+    @apply h-3 w-3 shrink-0 bg-brand;
+    -webkit-mask: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48' fill='none' stroke='black' stroke-width='4.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cg transform='rotate(0 24 24)'%3E%3Cpath d='M24 24V7M24 12.5l4.2-4.2M24 12.5l-4.2-4.2'/%3E%3C/g%3E%3Cg transform='rotate(60 24 24)'%3E%3Cpath d='M24 24V7M24 12.5l4.2-4.2M24 12.5l-4.2-4.2'/%3E%3C/g%3E%3Cg transform='rotate(120 24 24)'%3E%3Cpath d='M24 24V7M24 12.5l4.2-4.2M24 12.5l-4.2-4.2'/%3E%3C/g%3E%3Cg transform='rotate(180 24 24)'%3E%3Cpath d='M24 24V7M24 12.5l4.2-4.2M24 12.5l-4.2-4.2'/%3E%3C/g%3E%3Cg transform='rotate(240 24 24)'%3E%3Cpath d='M24 24V7M24 12.5l4.2-4.2M24 12.5l-4.2-4.2'/%3E%3C/g%3E%3Cg transform='rotate(300 24 24)'%3E%3Cpath d='M24 24V7M24 12.5l4.2-4.2M24 12.5l-4.2-4.2'/%3E%3C/g%3E%3C/svg%3E") center / contain no-repeat;
+    mask: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48' fill='none' stroke='black' stroke-width='4.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cg transform='rotate(0 24 24)'%3E%3Cpath d='M24 24V7M24 12.5l4.2-4.2M24 12.5l-4.2-4.2'/%3E%3C/g%3E%3Cg transform='rotate(60 24 24)'%3E%3Cpath d='M24 24V7M24 12.5l4.2-4.2M24 12.5l-4.2-4.2'/%3E%3C/g%3E%3Cg transform='rotate(120 24 24)'%3E%3Cpath d='M24 24V7M24 12.5l4.2-4.2M24 12.5l-4.2-4.2'/%3E%3C/g%3E%3Cg transform='rotate(180 24 24)'%3E%3Cpath d='M24 24V7M24 12.5l4.2-4.2M24 12.5l-4.2-4.2'/%3E%3C/g%3E%3Cg transform='rotate(240 24 24)'%3E%3Cpath d='M24 24V7M24 12.5l4.2-4.2M24 12.5l-4.2-4.2'/%3E%3C/g%3E%3Cg transform='rotate(300 24 24)'%3E%3Cpath d='M24 24V7M24 12.5l4.2-4.2M24 12.5l-4.2-4.2'/%3E%3C/g%3E%3C/svg%3E") center / contain no-repeat;
   }
 
   /* Hairline card: crisp edge + tiny offset, never a blurry cloud. */
@@ -172,6 +175,41 @@
     transform: translateX(calc(-50% - (var(--gap) / 2)));
   }
 }
+
+/* ── Call / WhatsApp "ringing" ───────────────────────────────────────────
+   Icon wiggles like an incoming call, then rests; a soft ripple leaves the
+   button on the same beat. Drawn on ::after so the button's own hard edge
+   shadow is untouched. Disabled by the reduced-motion block below. */
+@keyframes ring-wiggle {
+  0%, 100% { transform: rotate(0); }
+  20% { transform: rotate(-15deg); }
+  40% { transform: rotate(13deg); }
+  60% { transform: rotate(-11deg); }
+  80% { transform: rotate(9deg); }
+}
+@keyframes ring-ripple {
+  0% { box-shadow: 0 0 0 0 var(--ripple); }
+  100% { box-shadow: 0 0 0 12px transparent; }
+}
+@keyframes dot-blink {
+  0%, 100% { opacity: 1; transform: scale(1.15); box-shadow: 0 0 6px 2px hsl(142 90% 55% / 0.95), 0 0 14px 4px hsl(142 90% 55% / 0.55); }
+  50% { opacity: 0.35; transform: scale(0.85); box-shadow: 0 0 0 0 hsl(142 90% 55% / 0); }
+}
+/* Continuous: the icon shakes non-stop and ripples leave the button on a loop. */
+.cta-ringer-icon { animation: ring-wiggle 0.5s ease-in-out infinite; transform-origin: 50% 55%; }
+.cta-ringer { position: relative; }
+.cta-ringer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  animation: ring-ripple 1.2s ease-out infinite;
+}
+.cta-ringer-call { --ripple: hsl(var(--ember-cta) / 0.6); }
+.cta-ringer-wa { --ripple: hsl(var(--whatsapp) / 0.6); }
+.cta-ringer-wa::after { animation-delay: 0.6s; }
+.dot-blink { background-color: hsl(142 85% 50%); animation: dot-blink 1s ease-in-out infinite; }
 
 @media (prefers-reduced-motion: reduce) {
   *,

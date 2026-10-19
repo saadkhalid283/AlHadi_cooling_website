@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Menu, X, Search, Phone, MessageCircle, ArrowRight } from "lucide-react";
+import { Menu, X, Search, Phone, ArrowRight } from "lucide-react";
+import { WhatsAppIcon } from "@/components/brand/whatsapp-icon";
 import { useLanguage } from "@/components/providers/language-provider";
 import { CtaButton } from "@/components/ui/cta-button";
 import { buildIndex, search, type SearchEntry } from "@/lib/search";
@@ -208,7 +209,7 @@ export function FindMenu() {
                     rel="noopener noreferrer"
                     className="mt-4"
                   >
-                    <MessageCircle className="h-4 w-4" aria-hidden />
+                    <WhatsAppIcon className="h-4 w-4" aria-hidden />
                     {t.cta.whatsapp}
                   </CtaButton>
                 </div>
@@ -258,7 +259,7 @@ export function FindMenu() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <MessageCircle className="h-4 w-4" aria-hidden />
+                <WhatsAppIcon className="h-4 w-4" aria-hidden />
                 {t.cta.whatsapp}
               </CtaButton>
             </div>

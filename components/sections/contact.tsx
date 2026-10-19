@@ -1,16 +1,16 @@
 "use client";
 
+import type { ComponentType, SVGProps } from "react";
 import {
   Phone,
-  MessageCircle,
   Mail,
   MapPin,
   Clock,
   Navigation,
   Siren,
   ArrowUpRight,
-  type LucideIcon,
 } from "lucide-react";
+import { WhatsAppIcon } from "@/components/brand/whatsapp-icon";
 import { useLanguage } from "@/components/providers/language-provider";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/ui/reveal";
@@ -52,7 +52,7 @@ export function Contact() {
                 <CtaButton
                   href={site.telHref}
                   variant="call"
-                  className="mt-3"
+                  className="mt-3 max-sm:hidden"
                 >
                   <Phone className="h-4 w-4" aria-hidden />
                   {t.cta.call}
@@ -71,7 +71,7 @@ export function Contact() {
               />
               <ActionCard
                 href={site.whatsappHref(waMsg)}
-                icon={MessageCircle}
+                icon={WhatsAppIcon}
                 label={c.labels.whatsapp}
                 value={site.phoneDisplay}
                 tone="whatsapp"
@@ -142,7 +142,7 @@ function ActionCard({
   external,
 }: {
   href: string;
-  icon: LucideIcon;
+  icon: ComponentType<SVGProps<SVGSVGElement>>;
   label: string;
   value: string;
   tone: "call" | "whatsapp";
@@ -184,7 +184,7 @@ function InfoCard({
   external,
 }: {
   href?: string;
-  icon: LucideIcon;
+  icon: ComponentType<SVGProps<SVGSVGElement>>;
   label: string;
   value: string;
   note?: string;

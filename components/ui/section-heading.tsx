@@ -26,11 +26,11 @@ export function SectionHeading({
       )}
     >
       {eyebrow && <span className="eyebrow">{eyebrow}</span>}
-      <h2 className="display mt-3 text-[2rem] sm:text-[2.6rem]">{title}</h2>
+      <h2 className="display mt-3 text-[1.7rem] sm:text-[2.6rem]">{title}</h2>
       {subtitle && (
         <p
           className={cn(
-            "mt-4 text-lg leading-relaxed text-brand-muted",
+            "mt-3 text-base leading-relaxed text-brand-muted sm:mt-4 sm:text-lg sm:leading-relaxed",
             align === "start" && "max-w-2xl",
           )}
         >

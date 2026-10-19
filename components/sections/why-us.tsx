@@ -8,9 +8,9 @@ import {
   Cog,
   MapPin,
   Phone,
-  MessageCircle,
   type LucideIcon,
 } from "lucide-react";
+import { WhatsAppIcon } from "@/components/brand/whatsapp-icon";
 import { useLanguage } from "@/components/providers/language-provider";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/ui/reveal";
@@ -40,7 +40,7 @@ export function WhyUs() {
           />
         </Reveal>
 
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 grid gap-3 sm:mt-12 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
           {t.why.items.map((item, i) => {
             const Icon = ICONS[i] ?? ShieldCheck;
             return (
@@ -50,7 +50,7 @@ export function WhyUs() {
                 delay={(i % 3) * 0.06}
                 className="group h-full"
               >
-                <div className="flex h-full gap-4 rounded-lg border border-border bg-white p-6 transition-colors duration-200 hover:border-brand">
+                <div className="flex h-full gap-3.5 rounded-lg border border-border bg-white p-4 transition-colors sm:gap-4 sm:p-6 duration-200 hover:border-brand">
                   <span className="grid h-11 w-11 shrink-0 place-items-center rounded-md bg-sky-soft text-brand transition-colors duration-200 group-hover:bg-brand group-hover:text-white">
                     <Icon className="h-6 w-6" aria-hidden />
                   </span>
@@ -84,14 +84,14 @@ export function WhyUs() {
               ))}
             </div>
 
-            <div className="mt-8 flex flex-col items-start gap-5 border-t border-white/15 pt-8 sm:flex-row sm:items-center sm:justify-between">
+            <div className="mt-6 flex flex-col items-start gap-5 border-t border-white/15 pt-6 sm:mt-8 sm:pt-8 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <p className="text-xl font-bold">{t.why.cta.title}</p>
                 <p className="mt-1 text-sm text-white/75">
                   {t.why.cta.subtitle}
                 </p>
               </div>
-              <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
+              <div className="flex w-full flex-col gap-3 max-sm:hidden sm:w-auto sm:flex-row">
                 <CtaButton href={site.telHref} variant="call" className="px-6">
                   <Phone className="h-5 w-5" aria-hidden />
                   {t.cta.call}
@@ -103,7 +103,7 @@ export function WhyUs() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <MessageCircle className="h-5 w-5" aria-hidden />
+                  <WhatsAppIcon className="h-5 w-5" aria-hidden />
                   {t.cta.getQuote}
                 </CtaButton>
               </div>

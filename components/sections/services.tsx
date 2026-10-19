@@ -4,10 +4,10 @@ import {
   AirVent,
   Refrigerator,
   WashingMachine,
-  MessageCircle,
   ArrowRight,
   type LucideIcon,
 } from "lucide-react";
+import { WhatsAppIcon } from "@/components/brand/whatsapp-icon";
 import { useLanguage } from "@/components/providers/language-provider";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/ui/reveal";
@@ -58,7 +58,7 @@ export function Services() {
           />
         </Reveal>
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-3">
+        <div className="mt-8 grid gap-4 sm:mt-12 sm:gap-6 lg:grid-cols-3">
           {CATEGORIES.map((cat, ci) => {
             const meta = t.services.categories[ci];
             const Icon = cat.icon;
@@ -78,14 +78,14 @@ export function Services() {
                       width={520}
                       height={280}
                       loading="lazy"
-                      className="h-40 w-full object-cover"
+                      className="h-32 w-full object-cover sm:h-40"
                     />
                     <span className="absolute bottom-0 flex items-center gap-2 rounded-tl-lg bg-white px-3.5 py-2.5 text-brand ltr:right-0 ltr:rounded-tl-lg rtl:left-0 rtl:rounded-tl-none rtl:rounded-tr-lg">
                       <Icon className="h-5 w-5" aria-hidden />
                     </span>
                   </div>
 
-                  <div className="flex flex-1 flex-col p-5">
+                  <div className="flex flex-1 flex-col p-4 sm:p-5">
                     <h3 className="display text-xl text-brand-ink">
                       {meta.name}
                     </h3>
@@ -121,9 +121,9 @@ export function Services() {
                       variant="outline"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-5 w-full"
+                      className="mt-5 w-full max-sm:hidden"
                     >
-                      <MessageCircle className="h-4 w-4" aria-hidden />
+                      <WhatsAppIcon className="h-4 w-4" aria-hidden />
                       {t.cta.bookNow}
                     </CtaButton>
                   </div>
@@ -144,7 +144,7 @@ export function Services() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <MessageCircle className="h-4 w-4" aria-hidden />
+              <WhatsAppIcon className="h-4 w-4" aria-hidden />
               {t.services.more.cta}
             </CtaButton>
           </div>

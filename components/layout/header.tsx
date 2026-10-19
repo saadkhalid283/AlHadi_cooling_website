@@ -1,6 +1,7 @@
 "use client";
 
-import { Phone, MessageCircle } from "lucide-react";
+import { Phone } from "lucide-react";
+import { WhatsAppIcon } from "@/components/brand/whatsapp-icon";
 import { useLanguage } from "@/components/providers/language-provider";
 import { LangToggle } from "@/components/lang-toggle";
 import { CtaButton } from "@/components/ui/cta-button";
@@ -27,7 +28,7 @@ export function Header() {
           <p className="flex items-center gap-2 font-medium text-white/80">
             <span className="relative flex h-1.5 w-1.5">
               <span className="absolute inline-flex h-full w-full animate-pulse-ring rounded-full bg-whatsapp" />
-              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-whatsapp" />
+              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-whatsapp dot-blink" />
             </span>
             {t.hero.status}
           </p>
@@ -71,10 +72,10 @@ export function Header() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <MessageCircle className="h-4 w-4" aria-hidden />
+            <WhatsAppIcon className="h-4 w-4" aria-hidden />
             {t.cta.whatsapp}
           </CtaButton>
-          <CtaButton href={site.telHref} variant="ember">
+          <CtaButton href={site.telHref} variant="ember" className="max-sm:hidden">
             <Phone className="h-4 w-4" aria-hidden />
             {t.cta.call}
           </CtaButton>

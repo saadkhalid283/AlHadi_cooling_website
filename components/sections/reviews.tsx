@@ -1,7 +1,8 @@
 "use client";
 
 import type { CSSProperties } from "react";
-import { Star, Quote, MessageCircle } from "lucide-react";
+import { Star, Quote } from "lucide-react";
+import { WhatsAppIcon } from "@/components/brand/whatsapp-icon";
 import { useLanguage } from "@/components/providers/language-provider";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/ui/reveal";
@@ -55,7 +56,7 @@ export function Reviews() {
       </div>
 
       <div className="container-page">
-        <Reveal className="mt-12 flex flex-col items-center justify-center gap-4 text-center sm:flex-row">
+        <Reveal className="mt-12 flex flex-col items-center justify-center gap-4 text-center max-sm:hidden sm:flex-row">
           <p className="font-semibold text-brand-ink">{t.reviews.ctaText}</p>
           <CtaButton
             href={site.whatsappHref(waMsg)}
@@ -63,7 +64,7 @@ export function Reviews() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <MessageCircle className="h-5 w-5" aria-hidden />
+            <WhatsAppIcon className="h-5 w-5" aria-hidden />
             {t.cta.bookNow}
           </CtaButton>
         </Reveal>
