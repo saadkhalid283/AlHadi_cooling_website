@@ -50,7 +50,7 @@ export function ApplianceRail() {
                     </span>
                   </span>
 
-                  {/* Symptoms, not service names — people search by what they see. */}
+                  {/* Symptoms, not service names: people search by what they see. */}
                   <ul className="mt-4 flex flex-wrap gap-1.5">
                     {item.symptoms.map((s) => (
                       <li

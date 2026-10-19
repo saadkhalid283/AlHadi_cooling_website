@@ -211,7 +211,7 @@ export const en = {
       subtitle: "Talk to a real technician now, no call centers.",
     },
   },
-  // ⚠️ PLACEHOLDER TESTIMONIALS — the names and quotes below were written as
+  // ⚠️ PLACEHOLDER TESTIMONIALS: the names and quotes below were written as
   // filler, not collected from real customers. Replace with real Google
   // reviews before running paid traffic: invented testimonials breach Google
   // Ads policy and are the fastest way to lose a skeptical buyer.

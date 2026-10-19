@@ -9,7 +9,7 @@ const ICONS: LucideIcon[] = [MessageCircle, Receipt, Truck, BadgeCheck];
 
 /**
  * The objection this section removes: "what am I actually signing up for if I
- * call?" Stating the price step explicitly is the whole point — it is the
+ * call?" Stating the price step explicitly is the whole point, it is the
  * single biggest reason a home-services lead goes cold.
  *
  * Rendered as a numbered rail on a dark band so the page has one section that

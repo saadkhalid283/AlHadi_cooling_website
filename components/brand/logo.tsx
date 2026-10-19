@@ -38,7 +38,7 @@ export function LogoMark({
       )}
       {/* Mono sits on unknown ground (e.g. white text on the dark footer), so
           the badge is a tinted currentColor plate and the flake is drawn in
-          currentColor too — filling both solid made them cancel out. */}
+          currentColor too, filling both solid made them cancel out. */}
       <rect
         x="2"
         y="2"

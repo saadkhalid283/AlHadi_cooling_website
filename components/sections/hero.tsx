@@ -47,17 +47,17 @@ export function Hero() {
           className="absolute inset-0 -z-20 h-full w-full object-cover object-[68%_center] lg:object-center rtl:[transform:scaleX(-1)]"
         />
 
-        {/* Scrim A — mobile: bottom-weighted so stacked copy stays legible. */}
+        {/* Scrim A, mobile: bottom-weighted so stacked copy stays legible. */}
         <div
           aria-hidden
           className="absolute inset-0 -z-10 bg-gradient-to-t from-brand-ink via-brand-ink/80 to-brand-ink/45 lg:hidden"
         />
-        {/* Scrim B — desktop: directional, clearing over the appliances. */}
+        {/* Scrim B, desktop: directional, clearing over the appliances. */}
         <div
           aria-hidden
           className="absolute inset-0 -z-10 hidden lg:block ltr:bg-[linear-gradient(90deg,hsl(var(--brand-ink))_0%,hsl(var(--brand-ink)/0.94)_32%,hsl(var(--brand-ink)/0.62)_50%,transparent_72%)] rtl:bg-[linear-gradient(270deg,hsl(var(--brand-ink))_0%,hsl(var(--brand-ink)/0.94)_32%,hsl(var(--brand-ink)/0.62)_50%,transparent_72%)]"
         />
-        {/* Scrim C — grounds the photo into the rail below. */}
+        {/* Scrim C grounds the photo into the rail below. */}
         <div
           aria-hidden
           className="absolute inset-x-0 bottom-0 -z-10 h-28 bg-gradient-to-t from-brand-ink/70 to-transparent"

@@ -10,7 +10,7 @@ import { site } from "@/lib/site";
 /**
  * Mobile find-menu.
  *
- * The site had no mobile navigation at all — the primary nav is desktop-only —
+ * The site had no mobile navigation at all, the primary nav being desktop-only,
  * so scrolling was the only way to reach any section. This is that missing menu,
  * with a filter field on top: tap the list, or type to narrow it. Typing is
  * matched through lib/search so "fridge", "ثلاجة" and "Refrigerator Repair" all

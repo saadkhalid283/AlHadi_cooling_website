@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 type Variant = "call" | "whatsapp" | "outline" | "light" | "ember";
 
 /**
- * Buttons sit on a 2px hard bottom edge rather than a blurred drop shadow —
+ * Buttons sit on a 2px hard bottom edge rather than a blurred drop shadow,
  * it reads as a physical, pressable control and keeps the UI from looking
  * like a generic soft-shadow template. Pressing removes the edge.
  */

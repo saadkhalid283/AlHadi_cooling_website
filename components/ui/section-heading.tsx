@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils";
 
 /**
  * Shared section header. The `align` prop exists so sections can break the
- * centered rhythm — six identically centered headings in a row is the single
+ * centered rhythm: six identically centered headings in a row is the single
  * biggest reason a page reads as machine-generated.
  */
 export function SectionHeading({
